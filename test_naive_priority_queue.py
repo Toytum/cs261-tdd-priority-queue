@@ -1,5 +1,5 @@
 # DO NOT MODIFY THIS FILE
-# Run me via: python3 -m unittest test_naive_priority_queue
+# Run me via: python -m unittest test_naive_priority_queue
 
 import unittest
 import time
