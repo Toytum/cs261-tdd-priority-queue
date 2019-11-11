@@ -25,8 +25,10 @@ class Job:
         return self.priority >= other.priority
 
     def __repr__(self):
-        pass
+        return ('Job ' + str(self.priority) + ': ' + self.message)
+        
 
     def __str__(self):
-        pass    
+        return ('Job ' + str(self.priority) + ': ' + self.message)
+        
 
