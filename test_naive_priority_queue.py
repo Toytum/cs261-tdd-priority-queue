@@ -75,179 +75,179 @@ class TestNaivePriorityQueue(unittest.TestCase):
         pq.enqueue(j)
         self.assertEqual(j, pq.dequeue())
 
-    # def test_dequeue_one_internal(self):
-    #     """
-    #     Dequeuing from a single-element queue removes it from the internal list.
-    #     """
-    #     pq = NaivePriorityQueue()
-    #     job = Job(5, 'crown')
-    #     pq.enqueue(job)
-    #     self.assertEqual(1, len(pq.data))
-    #     _ = pq.dequeue()
-    #     self.assertEqual(0, len(pq.data))
+    def test_dequeue_one_internal(self):
+        """
+        Dequeuing from a single-element queue removes it from the internal list.
+        """
+        pq = NaivePriorityQueue()
+        job = Job(5, 'crown')
+        pq.enqueue(job)
+        self.assertEqual(1, len(pq.data))
+        _ = pq.dequeue()
+        self.assertEqual(0, len(pq.data))
 
     # # Hint: NaivePriorityQueues perform a linear search. Don't optimize.
 
-    # def test_dequeue_two(self):
-    #     """
-    #     Dequeuing from a two-element queue returns the one with highest priority.
-    #     """
-    #     pq = NaivePriorityQueue()
-    #     lower_priority = Job(1, 'of')
-    #     higher_priority = Job(3, 'the')
-    #     pq.enqueue(higher_priority)
-    #     pq.enqueue(lower_priority)
-    #     self.assertEqual(higher_priority, pq.dequeue())
+    def test_dequeue_two(self):
+        """
+        Dequeuing from a two-element queue returns the one with highest priority.
+        """
+        pq = NaivePriorityQueue()
+        lower_priority = Job(1, 'of')
+        higher_priority = Job(3, 'the')
+        pq.enqueue(higher_priority)
+        pq.enqueue(lower_priority)
+        self.assertEqual(higher_priority, pq.dequeue())
 
-    # def test_dequeue_two_internal(self):
-    #     """
-    #     Dequeuing from a two-element queue removes the job with the highest
-    #     priority from the list.
-    #     """
-    #     pq = NaivePriorityQueue()
-    #     lower_priority = Job(1, 'metropolis')
-    #     higher_priority = Job(3, 'shining')
-    #     pq.enqueue(higher_priority)
-    #     pq.enqueue(lower_priority)
-    #     _ = pq.dequeue()
-    #     self.assertEqual(lower_priority, pq.data[0])
-    #     self.assertEqual(1, len(pq.data))
+    def test_dequeue_two_internal(self):
+        """
+        Dequeuing from a two-element queue removes the job with the highest
+        priority from the list.
+        """
+        pq = NaivePriorityQueue()
+        lower_priority = Job(1, 'metropolis')
+        higher_priority = Job(3, 'shining')
+        pq.enqueue(higher_priority)
+        pq.enqueue(lower_priority)
+        _ = pq.dequeue()
+        self.assertEqual(lower_priority, pq.data[0])
+        self.assertEqual(1, len(pq.data))
 
-    # def test_dequeue_three(self):
-    #     """
-    #     Dequeuing from a three-element queue returns the jobs with the highest
-    #     priority.
-    #     """
-    #     pq = NaivePriorityQueue()
-    #     lower_priority = Job(1, 'like')
-    #     middle_priority = Job(3, 'who')
-    #     higher_priority = Job(5, 'on')
-    #     pq.enqueue(higher_priority)
-    #     pq.enqueue(lower_priority)
-    #     pq.enqueue(middle_priority)
-    #     self.assertEqual(higher_priority, pq.dequeue())
-    #     self.assertEqual(middle_priority, pq.dequeue())
-    #     self.assertEqual(lower_priority, pq.dequeue())
+    def test_dequeue_three(self):
+        """
+        Dequeuing from a three-element queue returns the jobs with the highest
+        priority.
+        """
+        pq = NaivePriorityQueue()
+        lower_priority = Job(1, 'like')
+        middle_priority = Job(3, 'who')
+        higher_priority = Job(5, 'on')
+        pq.enqueue(higher_priority)
+        pq.enqueue(lower_priority)
+        pq.enqueue(middle_priority)
+        self.assertEqual(higher_priority, pq.dequeue())
+        self.assertEqual(middle_priority, pq.dequeue())
+        self.assertEqual(lower_priority, pq.dequeue())
 
-    # def test_dequeue_three_internal(self):
-    #     """
-    #     Dequeuing from a three-element queue removes each dequeued value from
-    #     the internal list, highest-priority first.
-    #     """
-    #     pq = NaivePriorityQueue()
-    #     lower_priority = Job(1, 'top')
-    #     middle_priority = Job(3, 'of')
-    #     higher_priority = Job(5, 'this')
-    #     pq.enqueue(higher_priority)
-    #     pq.enqueue(lower_priority)
-    #     pq.enqueue(middle_priority)
-    #     _ = pq.dequeue()
-    #     self.assertEqual(lower_priority, pq.data[0])
-    #     _ = pq.dequeue()
-    #     self.assertEqual(lower_priority, pq.data[0])
+    def test_dequeue_three_internal(self):
+        """
+        Dequeuing from a three-element queue removes each dequeued value from
+        the internal list, highest-priority first.
+        """
+        pq = NaivePriorityQueue()
+        lower_priority = Job(1, 'top')
+        middle_priority = Job(3, 'of')
+        higher_priority = Job(5, 'this')
+        pq.enqueue(higher_priority)
+        pq.enqueue(lower_priority)
+        pq.enqueue(middle_priority)
+        _ = pq.dequeue()
+        self.assertEqual(lower_priority, pq.data[0])
+        _ = pq.dequeue()
+        self.assertEqual(lower_priority, pq.data[0])
 
     """
     Emptiness
     """
 
-    # def test_empty(self):
-    #     """
-    #     A queue is initially empty.
-    #     """
-    #     pq = NaivePriorityQueue()
-    #     self.assertTrue(pq.is_empty())
+    def test_empty(self):
+        """
+        A queue is initially empty.
+        """
+        pq = NaivePriorityQueue()
+        self.assertTrue(pq.is_empty())
 
-    # def test_not_empty(self):
-    #     """
-    #     A queue with one enqueued value is not empty.
-    #     """
-    #     pq = NaivePriorityQueue()
-    #     pq.enqueue(Job(1, 'People'))
-    #     self.assertFalse(pq.is_empty())
+    def test_not_empty(self):
+        """
+        A queue with one enqueued value is not empty.
+        """
+        pq = NaivePriorityQueue()
+        pq.enqueue(Job(1, 'People'))
+        self.assertFalse(pq.is_empty())
 
-    # def test_empty_after_dequeue(self):
-    #     """
-    #     A queue with one enqueued value is empty after dequeuing.
-    #     """
-    #     pq = NaivePriorityQueue()
-    #     pq.enqueue(Job(1, 'was'))
-    #     _ = pq.dequeue()
-    #     self.assertTrue(pq.is_empty())
+    def test_empty_after_dequeue(self):
+        """
+        A queue with one enqueued value is empty after dequeuing.
+        """
+        pq = NaivePriorityQueue()
+        pq.enqueue(Job(1, 'was'))
+        _ = pq.dequeue()
+        self.assertTrue(pq.is_empty())
 
-    # def test_not_empty_multiple(self):
-    #     """
-    #     A queue with two enqueued values is not empty after dequeuing only one.
-    #     """
-    #     pq = NaivePriorityQueue()
-    #     pq.enqueue(Job(1, 'hustling'))
-    #     pq.enqueue(Job(3, 'arguing and bustling'))
-    #     _ = pq.dequeue()
-    #     self.assertFalse(pq.is_empty())
+    def test_not_empty_multiple(self):
+        """
+        A queue with two enqueued values is not empty after dequeuing only one.
+        """
+        pq = NaivePriorityQueue()
+        pq.enqueue(Job(1, 'hustling'))
+        pq.enqueue(Job(3, 'arguing and bustling'))
+        _ = pq.dequeue()
+        self.assertFalse(pq.is_empty())
 
-    # def test_initial_dequeue(self):
-    #     """
-    #     Dequeuing from an empty queue returns None.
-    #     """
-    #     pq = NaivePriorityQueue()
-    #     self.assertIsNone(pq.dequeue())
+    def test_initial_dequeue(self):
+        """
+        Dequeuing from an empty queue returns None.
+        """
+        pq = NaivePriorityQueue()
+        self.assertIsNone(pq.dequeue())
 
     """
     Algorithmic complexity
     """
 
-    # def test_enqueue_efficiency(self):
-    #     """
-    #     Enqueing a value is always O(1).
-    #     """
-    #     time_samples = []
-    #     for _ in range(0, 1000):
-    #         pq = NaivePriorityQueue()
-    #         start_time = time.time()
-    #         pq.enqueue('fake')
-    #         end_time = time.time()
-    #         time_samples.append(end_time - start_time)
-    #     small_average_enqueue_time = sum(time_samples) / float(len(time_samples))
+    def test_enqueue_efficiency(self):
+        """
+        Enqueing a value is always O(1).
+        """
+        time_samples = []
+        for _ in range(0, 1000):
+            pq = NaivePriorityQueue()
+            start_time = time.time()
+            pq.enqueue('fake')
+            end_time = time.time()
+            time_samples.append(end_time - start_time)
+        small_average_enqueue_time = sum(time_samples) / float(len(time_samples))
 
-    #     large_queue = NaivePriorityQueue()
-    #     for _ in range(0, 1000000):
-    #         large_queue.enqueue('fake')
-    #     large_time_samples = []
-    #     for _ in range(0, 1000):
-    #         start_time = time.time()
-    #         large_queue.enqueue('fake')
-    #         end_time = time.time()
-    #         large_time_samples.append(end_time - start_time)
-    #     large_average_enqueue_time = sum(large_time_samples) / float(len(large_time_samples))
-    #     self.assertAlmostEqual(small_average_enqueue_time, large_average_enqueue_time, delta=small_average_enqueue_time)
+        large_queue = NaivePriorityQueue()
+        for _ in range(0, 1000000):
+            large_queue.enqueue('fake')
+        large_time_samples = []
+        for _ in range(0, 1000):
+            start_time = time.time()
+            large_queue.enqueue('fake')
+            end_time = time.time()
+            large_time_samples.append(end_time - start_time)
+        large_average_enqueue_time = sum(large_time_samples) / float(len(large_time_samples))
+        self.assertAlmostEqual(small_average_enqueue_time, large_average_enqueue_time, delta=small_average_enqueue_time)
 
     # While enqueing naively is efficient... what is the complexity of dequeuing?
 
-    # def test_dequeue_efficiency(self):
-    #     """
-    #     Dequeuing a value is O(n).
-    #     """
-    #     print("This test will take a while...") # See the comment below.
-    #     time_samples = []
-    #     for _ in range(0, 1000):
-    #         pq = NaivePriorityQueue()
-    #         pq.enqueue('fake')
-    #         start_time = time.time()
-    #         pq.dequeue()
-    #         end_time = time.time()
-    #         time_samples.append(end_time - start_time)
-    #     small_average_dequeue_time = sum(time_samples) / float(len(time_samples))
+    def test_dequeue_efficiency(self):
+        """
+        Dequeuing a value is O(n).
+        """
+        print("This test will take a while...") # See the comment below.
+        time_samples = []
+        for _ in range(0, 1000):
+            pq = NaivePriorityQueue()
+            pq.enqueue('fake')
+            start_time = time.time()
+            pq.dequeue()
+            end_time = time.time()
+            time_samples.append(end_time - start_time)
+        small_average_dequeue_time = sum(time_samples) / float(len(time_samples))
 
-    #     large_queue = NaivePriorityQueue()
-    #     for _ in range(0, 1000000):
-    #         large_queue.enqueue('fake')
-    #     large_time_samples = []
-    #     for _ in range(0, 1000):
-    #         start_time = time.time()
-    #         large_queue.dequeue()
-    #         end_time = time.time()
-    #         large_time_samples.append(end_time - start_time)
-    #     large_average_dequeue_time = sum(large_time_samples) / float(len(large_time_samples))
-    #     self.assertNotAlmostEqual(small_average_dequeue_time, large_average_dequeue_time, delta=small_average_dequeue_time)
+        large_queue = NaivePriorityQueue()
+        for _ in range(0, 1000000):
+            large_queue.enqueue('fake')
+        large_time_samples = []
+        for _ in range(0, 1000):
+            start_time = time.time()
+            large_queue.dequeue()
+            end_time = time.time()
+            large_time_samples.append(end_time - start_time)
+        large_average_dequeue_time = sum(large_time_samples) / float(len(large_time_samples))
+        self.assertNotAlmostEqual(small_average_dequeue_time, large_average_dequeue_time, delta=small_average_dequeue_time)
 
     # Notice how the last test takes time to "prove."
     # By studying *algorithm analysis*, you can prove the efficiency deductively,
