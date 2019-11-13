@@ -60,61 +60,66 @@ class MaxHeap:
       return self._data[int(self._parent_index(index))]
 
    def _greater_child_index(self, index):
-      if not self._has_left_child(index) and self._has_right_child(index):
+      if not self._has_left_child(index):
          return None
 
-      elif self._has_left_child(index) and not self._has_right_child(index):
+      elif not self._has_right_child(index):
          return self._left_child_index(index)
 
-      elif self._has_left_child(index) and self._has_right_child(index):
-         if self._left_child(index) >= self._right_child(index):
-            return self._left_child_index(index)
-         else:
-            return self._right_child_index(index)
+      elif self._left_child(index) >= self._right_child(index):
+         return self._left_child_index(index)
+
+      else:
+         return self._right_child_index(index)
 
    def _obeys_heap_property_at_index(self, index):
-      if self._size() == 1:
+      if not self._has_left_child(index):
          return True
       elif self._has_left_child(index) and not self._has_right_child(index):
          return self._value_at(index) > self._left_child(index)
-      elif self._has_left_child(index) and self._has_right_child(index):
-         return self._value_at(index) > self._left_child(index) and self._value_at(index) > self._right_child(index)
       else:
-         return True
+         return self._value_at(index) > self._left_child(index) and \
+            self._value_at(index) > self._right_child(index)
 
-   def _swap(self, indexA, indexB):
-      temp = self._data[indexA]
-      self._data[indexA] = self._data[indexB]
-      self._data[indexB] = temp
+   def _swap(self, index_a, index_b):
+      temp = self._data[index_a]
+      self._data[index_a] = self._data[index_b]
+      self._data[index_b] = temp
 
    def _sift_down(self, index):
-      if not self._has_left_child(index) and not self._has_right_child(index):
-         return self
+      if self._obeys_heap_property_at_index(index):
+         return
+      else:
+         greater_child_index = self._greater_child_index(index)
+         self._swap(index, greater_child_index)
+         self._sift_down(greater_child_index)
+      # if not self._has_left_child(index) and not self._has_right_child(index):
+      #    return self
 
-      elif self._has_left_child(index) and self._has_right_child(index):
-         if self._value_at(index) < self._left_child(index) and self._value_at(index) < self._right_child(index):
+      # elif self._has_left_child(index) and self._has_right_child(index):
+      #    if self._value_at(index) < self._left_child(index) and self._value_at(index) < self._right_child(index):
 
-            if self._left_child(index) < self._right_child(index):
-               self._swap(index, self._right_child_index(index))
-               return self._sift_down(self._right_child_index(index))
+      #       if self._left_child(index) < self._right_child(index):
+      #          self._swap(index, self._right_child_index(index))
+      #          return self._sift_down(self._right_child_index(index))
 
-            elif self._left_child(index) > self._right_child(index):
-               self._swap(index, self._left_child_index(index))
-               return self._sift_down(self._left_child_index(index))
+      #       elif self._left_child(index) > self._right_child(index):
+      #          self._swap(index, self._left_child_index(index))
+      #          return self._sift_down(self._left_child_index(index))
 
-         elif not self._value_at(index) < self._left_child(index) and self._value_at(index) < self._right_child(index):
-               self._swap(index, self._right_child_index(index))
-               return self._sift_down(self._right_child_index(index))
+      #    elif not self._value_at(index) < self._left_child(index) and self._value_at(index) < self._right_child(index):
+      #          self._swap(index, self._right_child_index(index))
+      #          return self._sift_down(self._right_child_index(index))
          
-      elif self._has_left_child(index) and not self._has_right_child(index):
-         if self._value_at(index) < self._left_child(index):
-            self._swap(index, self._left_child_index(index))
-            return self._sift_down(self._left_child_index(index))
+      # elif self._has_left_child(index) and not self._has_right_child(index):
+      #    if self._value_at(index) < self._left_child(index):
+      #       self._swap(index, self._left_child_index(index))
+      #       return self._sift_down(self._left_child_index(index))
       
-      elif self._has_right_child(index) and not self._has_left_child(index):
-         if self._value_at(index) < self._right_child(index):
-            self._swap(index, self._right_child_index(index))
-            return self._sift_down(self._right_child_index(index))
+      # elif self._has_right_child(index) and not self._has_left_child(index):
+      #    if self._value_at(index) < self._right_child(index):
+      #       self._swap(index, self._right_child_index(index))
+      #       return self._sift_down(self._right_child_index(index))
 
    def _sift_up(self, index):
       if index == 0:  

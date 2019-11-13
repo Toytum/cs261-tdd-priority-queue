@@ -6,11 +6,9 @@ class NaivePriorityQueue:
 
     def __init__(self):
         self.data = []
-        pass
 
     def enqueue(self, item):
         self.data.append(item)
-            
 
     def dequeue(self):
         if self.is_empty():
