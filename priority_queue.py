@@ -8,4 +8,7 @@ from max_heap import MaxHeap
 
 class PriorityQueue:
 
+    def __init__(self):
+        self.heap = MaxHeap[]
+
     pass

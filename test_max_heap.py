@@ -1,5 +1,5 @@
 # DO NOT MODIFY THIS FILE
-# Run me via: python3 -m unittest test_max_heap
+# Run me via: python -m unittest test_max_heap
 
 import unittest
 import time
@@ -26,69 +26,69 @@ class TestMaxHeap(unittest.TestCase):
     A heap stores its data in an array, such as a Python list.
     """
 
-    # def test_internal_data(self):
-    #     """
-    #     A MaxHeap uses an array (a dynamic array / Python list) to store its data.
-    #     """
-    #     h = MaxHeap()
-    #     self.assertEqual(list, type(h._data))
-    #     self.assertEqual(0, len(h._data))
+    def test_internal_data(self):
+        """
+        A MaxHeap uses an array (a dynamic array / Python list) to store its data.
+        """
+        h = MaxHeap()
+        self.assertEqual(list, type(h._data))
+        self.assertEqual(0, len(h._data))
 
     """
     Size is the number of items in the heap.
     """
 
-    # def test_size_initial(self):
-    #     """
-    #     The _size() of a new heap is 0.
-    #     """
-    #     h = MaxHeap()
-    #     self.assertEqual(0, h._size())
+    def test_size_initial(self):
+        """
+        The _size() of a new heap is 0.
+        """
+        h = MaxHeap()
+        self.assertEqual(0, h._size())
 
-    # def test_size_data(self):
-    #     """
-    #     The _size() of a heap is equal to the number of values in its list.
-    #     """
-    #     h = MaxHeap()
-    #     h._data.append('fake')
-    #     self.assertEqual(1, h._size())
-    #     h._data.append('fake')
-    #     self.assertEqual(2, h._size())
-    #     h._data.pop()
-    #     self.assertEqual(1, h._size())
+    def test_size_data(self):
+        """
+        The _size() of a heap is equal to the number of values in its list.
+        """
+        h = MaxHeap()
+        h._data.append('fake')
+        self.assertEqual(1, h._size())
+        h._data.append('fake')
+        self.assertEqual(2, h._size())
+        h._data.pop()
+        self.assertEqual(1, h._size())
 
     """
     Emptiness. A warm-up. Good to know, and a handy abstraction that you might
     use elsewhere.
     """
 
-    # def test_empty_initial(self):
-    #     """
-    #     A new heap is empty.
-    #     Hint: _size is a convenient abstraction, and helps avoid repetitive code.
-    #     """
-    #     h = MaxHeap()
-    #     self.assertTrue(h._is_empty())
+    def test_empty_initial(self):
+        """
+        A new heap is empty.
+        Hint: _size is a convenient abstraction, and helps avoid repetitive code.
+        """
+        h = MaxHeap()
+        self.assertTrue(h._is_empty())
 
-    # def test_not_empty(self):
-    #     """
-    #     A heap is not empty if there are items in its data list.
-    #     """
-    #     h = MaxHeap()
-    #     h._data.append('fake')
-    #     self.assertFalse(h._is_empty())
-    #     h._data.append('fake')
-    #     self.assertFalse(h._is_empty())
+    def test_not_empty(self):
+        """
+        A heap is not empty if there are items in its data list.
+        """
+        h = MaxHeap()
+        h._data.append('fake')
+        self.assertFalse(h._is_empty())
+        h._data.append('fake')
+        self.assertFalse(h._is_empty())
 
-    # def test_empty(self):
-    #     """
-    #     A heap with no items in its data list is empty.
-    #     """
-    #     h = MaxHeap()
-    #     h._data.append('fake')
-    #     h._data.append('fake')
-    #     h._data = []
-    #     self.assertTrue(h._is_empty())
+    def test_empty(self):
+        """
+        A heap with no items in its data list is empty.
+        """
+        h = MaxHeap()
+        h._data.append('fake')
+        h._data.append('fake')
+        h._data = []
+        self.assertTrue(h._is_empty())
 
     """
     Last index. The index of the last element in the heap.
@@ -96,80 +96,80 @@ class TestMaxHeap(unittest.TestCase):
     moves the last element to the root position. So this will be handy.
     """
 
-    # def test_last_index_initial(self):
-    #     """
-    #     The 'last index' of an empty heap happens to be -1.
-    #     Hint: Easy to calculate if you know its size.
-    #     """
-    #     h = MaxHeap()
-    #     self.assertEqual(-1, h._last_index())
+    def test_last_index_initial(self):
+        """
+        The 'last index' of an empty heap happens to be -1.
+        Hint: Easy to calculate if you know its size.
+        """
+        h = MaxHeap()
+        self.assertEqual(-1, h._last_index())
 
-    # def test_last_index_one(self):
-    #     """
-    #     The last index of a heap with one element is 0.
-    #     Hint: Easy, if you know how to determine the last index of a list.
-    #     """
-    #     h = MaxHeap()
-    #     h._data.append('fake')
-    #     self.assertEqual(0, h._last_index())
+    def test_last_index_one(self):
+        """
+        The last index of a heap with one element is 0.
+        Hint: Easy, if you know how to determine the last index of a list.
+        """
+        h = MaxHeap()
+        h._data.append('fake')
+        self.assertEqual(0, h._last_index())
 
-    # def test_last_index_two(self):
-    #     """
-    #     The last index of a heap with two elements is 1.
-    #     """
-    #     h = MaxHeap()
-    #     h._data.append('fake')
-    #     h._data.append('fake')
-    #     self.assertEqual(1, h._last_index())
+    def test_last_index_two(self):
+        """
+        The last index of a heap with two elements is 1.
+        """
+        h = MaxHeap()
+        h._data.append('fake')
+        h._data.append('fake')
+        self.assertEqual(1, h._last_index())
 
-    # def test_last_index_42(self):
-    #     """
-    #     The last index of a heap with forty-two elements is 41.
-    #     """
-    #     h = MaxHeap()
-    #     for _ in range(42):
-    #         h._data.append('fake')
-    #     self.assertEqual(41, h._last_index())
+    def test_last_index_42(self):
+        """
+        The last index of a heap with forty-two elements is 41.
+        """
+        h = MaxHeap()
+        for _ in range(42):
+            h._data.append('fake')
+        self.assertEqual(41, h._last_index())
 
     """
     Value at an index. It's handy to grab a value at a particular index, so lets
     encapsulate this work into a method.
     """
 
-    # def test_value_at_zero(self):
-    #     """
-    #     The value at index 0 is the value of the 0th item in the heap's data list.
-    #     """
-    #     h = MaxHeap()
-    #     value = fake_value()
-    #     h._data.append(value)
-    #     self.assertEqual(value, h._value_at(0))
+    def test_value_at_zero(self):
+        """
+        The value at index 0 is the value of the 0th item in the heap's data list.
+        """
+        h = MaxHeap()
+        value = fake_value()
+        h._data.append(value)
+        self.assertEqual(value, h._value_at(0))
 
-    # def test_value_at(self):
-    #     """
-    #     The value at index i is the value of the i'th item in the heap's data list.
-    #     """
-    #     h = MaxHeap()
-    #     value = fake_value()
-    #     h._data.append(value)
-    #     self.assertEqual(value, h._value_at(0))
-    #     value = fake_value()
-    #     h._data.append(value)
-    #     self.assertEqual(value, h._value_at(1))
-    #     for i in range(2, 9):
-    #         value = fake_value()
-    #         h._data.append(value)
-    #         self.assertEqual(value, h._value_at(i))
+    def test_value_at(self):
+        """
+        The value at index i is the value of the i'th item in the heap's data list.
+        """
+        h = MaxHeap()
+        value = fake_value()
+        h._data.append(value)
+        self.assertEqual(value, h._value_at(0))
+        value = fake_value()
+        h._data.append(value)
+        self.assertEqual(value, h._value_at(1))
+        for i in range(2, 9):
+            value = fake_value()
+            h._data.append(value)
+            self.assertEqual(value, h._value_at(i))
 
-    # def test_value_at_invalid_index(self):
-    #     """
-    #     _value_at raises an IndexError when the index is out of bounds.
-    #     """
-    #     h = MaxHeap()
-    #     self.assertRaises(IndexError, h._value_at, 0)
-    #     h._data.append('fake')
-    #     self.assertRaises(IndexError, h._value_at, 1)
-    #     self.assertRaises(IndexError, h._value_at, 2)
+    def test_value_at_invalid_index(self):
+        """
+        _value_at raises an IndexError when the index is out of bounds.
+        """
+        h = MaxHeap()
+        self.assertRaises(IndexError, h._value_at, 0)
+        h._data.append('fake')
+        self.assertRaises(IndexError, h._value_at, 1)
+        self.assertRaises(IndexError, h._value_at, 2)
 
     """
     Indexes of left child, right child, and parent.
@@ -181,53 +181,53 @@ class TestMaxHeap(unittest.TestCase):
     Hint: Draw it out.
     """
 
-    # def test_left_child_index(self):
-    #     """
-    #     An element at index i has a left child at index ____.
-    #     Hint: Know how the heap works. Look up and study the concept.
-    #     """
-    #     h = MaxHeap()
-    #     # This method just calculates the index. It doesn't care about the data.
-    #     self.assertEqual(1, h._left_child_index(0))
-    #     self.assertEqual(3, h._left_child_index(1))
-    #     self.assertEqual(5, h._left_child_index(2))
-    #     self.assertEqual(7, h._left_child_index(3))
-    #     self.assertEqual(8675309, h._left_child_index(4337654))
+    def test_left_child_index(self):
+        """
+        An element at index i has a left child at index ____.
+        Hint: Know how the heap works. Look up and study the concept.
+        """
+        h = MaxHeap()
+        # This method just calculates the index. It doesn't care about the data.
+        self.assertEqual(1, h._left_child_index(0))
+        self.assertEqual(3, h._left_child_index(1))
+        self.assertEqual(5, h._left_child_index(2))
+        self.assertEqual(7, h._left_child_index(3))
+        self.assertEqual(8675309, h._left_child_index(4337654))
 
-    # def test_right_child_index(self):
-    #     """
-    #     An element at index i has a right child at index ____.
-    #     Hint: Know how the heap works. Look up and study the concept.
-    #     """
-    #     h = MaxHeap()
-    #     # This method just calculates the index. It doesn't care about the data.
-    #     self.assertEqual(2, h._right_child_index(0))
-    #     self.assertEqual(4, h._right_child_index(1))
-    #     self.assertEqual(6, h._right_child_index(2))
-    #     self.assertEqual(8, h._right_child_index(3))
-    #     self.assertEqual(5446, h._right_child_index(2722))
+    def test_right_child_index(self):
+        """
+        An element at index i has a right child at index ____.
+        Hint: Know how the heap works. Look up and study the concept.
+        """
+        h = MaxHeap()
+        # This method just calculates the index. It doesn't care about the data.
+        self.assertEqual(2, h._right_child_index(0))
+        self.assertEqual(4, h._right_child_index(1))
+        self.assertEqual(6, h._right_child_index(2))
+        self.assertEqual(8, h._right_child_index(3))
+        self.assertEqual(5446, h._right_child_index(2722))
 
-    # def test_parent_index(self):
-    #     """
-    #     An element at index i has a parent at index ___.
-    #     Hints: Work this out instead of looking it up. Draw it.
-    #            And, use integer division for natural flooring.
-    #            Watch your order of operations.
-    #     """
-    #     h = MaxHeap()
-    #     # This first one is nonsense, but is here for completeness.
-    #     self.assertEqual(-1, h._parent_index(0))
-    #     # The root's left child is at 1, so its parent is at index 0.
-    #     self.assertEqual(0, h._parent_index(1))
-    #     # The root's right child is at 2, so its parent is at index 0.
-    #     self.assertEqual(0, h._parent_index(2))
-    #     self.assertEqual(1, h._parent_index(3))
-    #     self.assertEqual(1, h._parent_index(4))
-    #     self.assertEqual(2, h._parent_index(5))
-    #     self.assertEqual(2, h._parent_index(6))
-    #     self.assertEqual(3, h._parent_index(7))
-    #     self.assertEqual(4337654, h._parent_index(8675309))
-    #     self.assertEqual(2722, h._parent_index(5446))
+    def test_parent_index(self):
+        """
+        An element at index i has a parent at index ___.
+        Hints: Work this out instead of looking it up. Draw it.
+               And, use integer division for natural flooring.
+               Watch your order of operations.
+        """
+        h = MaxHeap()
+        # This first one is nonsense, but is here for completeness.
+        self.assertEqual(-1, h._parent_index(0))
+        # The root's left child is at 1, so its parent is at index 0.
+        self.assertEqual(0, h._parent_index(1))
+        # The root's right child is at 2, so its parent is at index 0.
+        self.assertEqual(0, h._parent_index(2))
+        self.assertEqual(1, h._parent_index(3))
+        self.assertEqual(1, h._parent_index(4))
+        self.assertEqual(2, h._parent_index(5))
+        self.assertEqual(2, h._parent_index(6))
+        self.assertEqual(3, h._parent_index(7))
+        self.assertEqual(4337654, h._parent_index(8675309))
+        self.assertEqual(2722, h._parent_index(5446))
 
     """
     Left child, right child, and parent _values_.
@@ -236,173 +236,173 @@ class TestMaxHeap(unittest.TestCase):
     Hint: Use your previous abstractions. Don't repeat yourself.
     """
 
-    # def test_parent(self):
-    #     """
-    #     Given an index i, the parent is the value at the 'parent index' of i.
-    #     Hint: The phrase above is nearly identical to the code, if you use your
-    #           abstractions.
-    #     """
-    #     h = MaxHeap()
-    #     fake_root = fake_value()
-    #     fake_left_child = fake_value()
-    #     fake_right_child = fake_value()
-    #     fake_left_left_child = fake_value()
-    #     fake_left_right_child = fake_value()
-    #     h._data.append(fake_root)
-    #     h._data.append(fake_left_child)
-    #     h._data.append(fake_right_child)
-    #     h._data.append(fake_left_left_child)
-    #     h._data.append(fake_left_right_child)
-    #     self.assertEqual(fake_root, h._parent(1))
-    #     self.assertEqual(fake_root, h._parent(2))
-    #     self.assertEqual(fake_left_child, h._parent(3))
-    #     self.assertEqual(fake_left_child, h._parent(4))
+    def test_parent(self):
+        """
+        Given an index i, the parent is the value at the 'parent index' of i.
+        Hint: The phrase above is nearly identical to the code, if you use your
+              abstractions.
+        """
+        h = MaxHeap()
+        fake_root = fake_value()
+        fake_left_child = fake_value()
+        fake_right_child = fake_value()
+        fake_left_left_child = fake_value()
+        fake_left_right_child = fake_value()
+        h._data.append(fake_root)
+        h._data.append(fake_left_child)
+        h._data.append(fake_right_child)
+        h._data.append(fake_left_left_child)
+        h._data.append(fake_left_right_child)
+        self.assertEqual(fake_root, h._parent(1))
+        self.assertEqual(fake_root, h._parent(2))
+        self.assertEqual(fake_left_child, h._parent(3))
+        self.assertEqual(fake_left_child, h._parent(4))
 
-    # def test_parent_invalid(self):
-    #     """
-    #     Retrieving the parent value for an index without a parent is invalid.
-    #     """
-    #     h = MaxHeap()
-    #     self.assertRaises(IndexError, h._parent, 0)
-    #     self.assertRaises(IndexError, h._parent, 1)
-    #     self.assertRaises(IndexError, h._parent, 2)
-    #     h._data.append('fake')
-    #     try:
-    #         h._parent(1)
-    #         h._parent(2)
-    #     except IndexError:
-    #         self.fail("Could not retrieve parent properly.")
-    #     for i in range(3, 9):
-    #         self.assertRaises(IndexError, h._parent, i)
+    def test_parent_invalid(self):
+        """
+        Retrieving the parent value for an index without a parent is invalid.
+        """
+        h = MaxHeap()
+        self.assertRaises(IndexError, h._parent, 0)
+        self.assertRaises(IndexError, h._parent, 1)
+        self.assertRaises(IndexError, h._parent, 2)
+        h._data.append('fake')
+        try:
+            h._parent(1)
+            h._parent(2)
+        except IndexError:
+            self.fail("Could not retrieve parent properly.")
+        for i in range(3, 9):
+            self.assertRaises(IndexError, h._parent, i)
 
-    # def test_left_child_none(self):
-    #     """
-    #     If the 'left child index' of an element at index i exceeds the bounds of
-    #     the data list, just return None.
-    #     Hint: Draw both a 5-element array and tree. What is the value of the left
-    #           child of the third (index 2) element? And the fourth? And the fifth?
-    #     """
-    #     h = MaxHeap()
-    #     h._data.append('fake')
-    #     h._data.append('fake')
-    #     h._data.append('fake')
-    #     self.assertIsNone(h._left_child(1))
-    #     self.assertIsNone(h._left_child(2))
-    #     h._data.append('fake')
-    #     h._data.append('fake')
-    #     self.assertIsNone(h._left_child(2))
-    #     self.assertIsNone(h._left_child(3))
-    #     self.assertIsNone(h._left_child(4))
+    def test_left_child_none(self):
+        """
+        If the 'left child index' of an element at index i exceeds the bounds of
+        the data list, just return None.
+        Hint: Draw both a 5-element array and tree. What is the value of the left
+              child of the third (index 2) element? And the fourth? And the fifth?
+        """
+        h = MaxHeap()
+        h._data.append('fake')
+        h._data.append('fake')
+        h._data.append('fake')
+        self.assertIsNone(h._left_child(1))
+        self.assertIsNone(h._left_child(2))
+        h._data.append('fake')
+        h._data.append('fake')
+        self.assertIsNone(h._left_child(2))
+        self.assertIsNone(h._left_child(3))
+        self.assertIsNone(h._left_child(4))
 
-    # def test_left_child(self):
-    #     """
-    #     Given an index i, the left child is the value at the 'left child index'
-    #     of i.
-    #     Hint: The phrase above is nearly identical to the code, if you use your
-    #           abstractions.
-    #     """
-    #     h = MaxHeap()
-    #     fake_root = fake_value()
-    #     fake_left_child = fake_value()
-    #     fake_right_child = fake_value()
-    #     fake_left_left_child = fake_value()
-    #     fake_left_right_child = fake_value()
-    #     h._data.append(fake_root)
-    #     h._data.append(fake_left_child)
-    #     h._data.append(fake_right_child)
-    #     h._data.append(fake_left_left_child)
-    #     h._data.append(fake_left_right_child)
-    #     self.assertEqual(fake_left_child, h._left_child(0))
-    #     self.assertEqual(fake_left_left_child, h._left_child(1))
-    #     self.assertIsNone(h._left_child(2))
-    #     self.assertIsNone(h._left_child(3))
-    #     self.assertIsNone(h._left_child(4))
+    def test_left_child(self):
+        """
+        Given an index i, the left child is the value at the 'left child index'
+        of i.
+        Hint: The phrase above is nearly identical to the code, if you use your
+              abstractions.
+        """
+        h = MaxHeap()
+        fake_root = fake_value()
+        fake_left_child = fake_value()
+        fake_right_child = fake_value()
+        fake_left_left_child = fake_value()
+        fake_left_right_child = fake_value()
+        h._data.append(fake_root)
+        h._data.append(fake_left_child)
+        h._data.append(fake_right_child)
+        h._data.append(fake_left_left_child)
+        h._data.append(fake_left_right_child)
+        self.assertEqual(fake_left_child, h._left_child(0))
+        self.assertEqual(fake_left_left_child, h._left_child(1))
+        self.assertIsNone(h._left_child(2))
+        self.assertIsNone(h._left_child(3))
+        self.assertIsNone(h._left_child(4))
 
-    # def test_right_child_none(self):
-    #     """
-    #     If the 'right child index' of an element at index i exceeds the bounds of
-    #     the data list, just return None.
-    #     Hint: Draw both a 5-element array and tree. What is the value of the right
-    #           child of the third (index 2) element? And the fourth? And the fifth?
-    #     """
-    #     h = MaxHeap()
-    #     h._data.append('fake')
-    #     h._data.append('fake')
-    #     h._data.append('fake')
-    #     self.assertIsNone(h._right_child(2))
-    #     h._data.append('fake')
-    #     h._data.append('fake')
-    #     self.assertIsNone(h._right_child(2))
-    #     self.assertIsNone(h._right_child(3))
-    #     self.assertIsNone(h._right_child(4))
+    def test_right_child_none(self):
+        """
+        If the 'right child index' of an element at index i exceeds the bounds of
+        the data list, just return None.
+        Hint: Draw both a 5-element array and tree. What is the value of the right
+              child of the third (index 2) element? And the fourth? And the fifth?
+        """
+        h = MaxHeap()
+        h._data.append('fake')
+        h._data.append('fake')
+        h._data.append('fake')
+        self.assertIsNone(h._right_child(2))
+        h._data.append('fake')
+        h._data.append('fake')
+        self.assertIsNone(h._right_child(2))
+        self.assertIsNone(h._right_child(3))
+        self.assertIsNone(h._right_child(4))
 
-    # def test_right_child(self):
-    #     """
-    #     Given an index i, the right child is the value at the 'right child index'
-    #     of i.
-    #     Hint: The phrase above is nearly identical to the code, if you use your
-    #           abstractions.
-    #     """
-    #     h = MaxHeap()
-    #     fake_root = fake_value()
-    #     fake_left_child = fake_value()
-    #     fake_right_child = fake_value()
-    #     fake_left_left_child = fake_value()
-    #     fake_left_right_child = fake_value()
-    #     h._data.append(fake_root)
-    #     h._data.append(fake_left_child)
-    #     h._data.append(fake_right_child)
-    #     h._data.append(fake_left_left_child)
-    #     h._data.append(fake_left_right_child)
-    #     self.assertEqual(fake_right_child, h._right_child(0))
-    #     self.assertEqual(fake_left_right_child, h._right_child(1))
-    #     self.assertIsNone(h._right_child(2))
-    #     self.assertIsNone(h._right_child(3))
-    #     self.assertIsNone(h._right_child(4))
+    def test_right_child(self):
+        """
+        Given an index i, the right child is the value at the 'right child index'
+        of i.
+        Hint: The phrase above is nearly identical to the code, if you use your
+              abstractions.
+        """
+        h = MaxHeap()
+        fake_root = fake_value()
+        fake_left_child = fake_value()
+        fake_right_child = fake_value()
+        fake_left_left_child = fake_value()
+        fake_left_right_child = fake_value()
+        h._data.append(fake_root)
+        h._data.append(fake_left_child)
+        h._data.append(fake_right_child)
+        h._data.append(fake_left_left_child)
+        h._data.append(fake_left_right_child)
+        self.assertEqual(fake_right_child, h._right_child(0))
+        self.assertEqual(fake_left_right_child, h._right_child(1))
+        self.assertIsNone(h._right_child(2))
+        self.assertIsNone(h._right_child(3))
+        self.assertIsNone(h._right_child(4))
 
     """
     Left child and right child presence. These will be handy later.
     """
 
-    # def test_has_left_child(self):
-    #     """
-    #     True when an element's left child isn't None. Otherwise False.
-    #     """
-    #     h = MaxHeap()
-    #     fake_root = fake_value()
-    #     fake_left_child = fake_value()
-    #     fake_right_child = fake_value()
-    #     fake_left_left_child = fake_value()
-    #     fake_left_right_child = fake_value()
-    #     h._data.append(fake_root)
-    #     h._data.append(fake_left_child)
-    #     h._data.append(fake_right_child)
-    #     h._data.append(fake_left_left_child)
-    #     h._data.append(fake_left_right_child)
-    #     self.assertTrue(h._has_left_child(0))
-    #     self.assertTrue(h._has_left_child(1))
-    #     self.assertFalse(h._has_left_child(2))
-    #     self.assertFalse(h._has_left_child(3))
-    #     self.assertFalse(h._has_left_child(4))
+    def test_has_left_child(self):
+        """
+        True when an element's left child isn't None. Otherwise False.
+        """
+        h = MaxHeap()
+        fake_root = fake_value()
+        fake_left_child = fake_value()
+        fake_right_child = fake_value()
+        fake_left_left_child = fake_value()
+        fake_left_right_child = fake_value()
+        h._data.append(fake_root)
+        h._data.append(fake_left_child)
+        h._data.append(fake_right_child)
+        h._data.append(fake_left_left_child)
+        h._data.append(fake_left_right_child)
+        self.assertTrue(h._has_left_child(0))
+        self.assertTrue(h._has_left_child(1))
+        self.assertFalse(h._has_left_child(2))
+        self.assertFalse(h._has_left_child(3))
+        self.assertFalse(h._has_left_child(4))
 
-    # def test_has_right_child(self):
-    #     """
-    #     True when an element's right child isn't None. Otherwise False.
-    #     """
-    #     h = MaxHeap()
-    #     fake_root = fake_value()
-    #     fake_left_child = fake_value()
-    #     fake_right_child = fake_value()
-    #     fake_left_left_child = fake_value()
-    #     h._data.append(fake_root)
-    #     h._data.append(fake_left_child)
-    #     h._data.append(fake_right_child)
-    #     h._data.append(fake_left_left_child)
-    #     self.assertTrue(h._has_right_child(0))
-    #     self.assertFalse(h._has_right_child(1))
-    #     self.assertFalse(h._has_right_child(2))
-    #     self.assertFalse(h._has_right_child(3))
-    #     self.assertFalse(h._has_right_child(4))
+    def test_has_right_child(self):
+        """
+        True when an element's right child isn't None. Otherwise False.
+        """
+        h = MaxHeap()
+        fake_root = fake_value()
+        fake_left_child = fake_value()
+        fake_right_child = fake_value()
+        fake_left_left_child = fake_value()
+        h._data.append(fake_root)
+        h._data.append(fake_left_child)
+        h._data.append(fake_right_child)
+        h._data.append(fake_left_left_child)
+        self.assertTrue(h._has_right_child(0))
+        self.assertFalse(h._has_right_child(1))
+        self.assertFalse(h._has_right_child(2))
+        self.assertFalse(h._has_right_child(3))
+        self.assertFalse(h._has_right_child(4))
 
     """
     Index of the greater child.
@@ -414,48 +414,48 @@ class TestMaxHeap(unittest.TestCase):
     Therefore, it's handy to be able to determine the index of the larger child.
     """
 
-    # def test_greater_child_index_one(self):
-    #     """
-    #     The 'greater child index' of an element without children is None.
-    #     """
-    #     h = MaxHeap()
-    #     h._data.append('fake')
-    #     self.assertIsNone(h._greater_child_index(0))
+    def test_greater_child_index_one(self):
+        """
+        The 'greater child index' of an element without children is None.
+        """
+        h = MaxHeap()
+        h._data.append('fake')
+        self.assertIsNone(h._greater_child_index(0))
 
-    # def test_greater_child_index_left_only(self):
-    #     """
-    #     The 'greater child index' of an element with just a left child (no right
-    #     child) returns the index of that left child.
-    #     """
-    #     h = MaxHeap()
-    #     h._data.append('fake')
-    #     h._data.append('fake')
-    #     self.assertEqual(1, h._greater_child_index(0))
+    def test_greater_child_index_left_only(self):
+        """
+        The 'greater child index' of an element with just a left child (no right
+        child) returns the index of that left child.
+        """
+        h = MaxHeap()
+        h._data.append('fake')
+        h._data.append('fake')
+        self.assertEqual(1, h._greater_child_index(0))
 
-    # def test_greater_child_index_left(self):
-    #     """
-    #     The 'greater child index' of an element with a left and right child, is
-    #     the index of the left child when it has a value greater than or equal to
-    #     the right child.
-    #     """
-    #     h = MaxHeap()
-    #     h._data.append(10)
-    #     h._data.append(5)
-    #     h._data.append(1)
-    #     self.assertEqual(1, h._greater_child_index(0))
+    def test_greater_child_index_left(self):
+        """
+        The 'greater child index' of an element with a left and right child, is
+        the index of the left child when it has a value greater than or equal to
+        the right child.
+        """
+        h = MaxHeap()
+        h._data.append(10)
+        h._data.append(5)
+        h._data.append(1)
+        self.assertEqual(1, h._greater_child_index(0))
 
-    # def test_greater_child_index_right(self):
-    #     """
-    #     The 'greater child index' of an element with a left and right child, is
-    #     the index of the right child when it has a larger value than the left child.
-    #     Hint: Refine your logic. What are the possible states? No children, a
-    #           left but no right, or a left and a right.
-    #     """
-    #     h = MaxHeap()
-    #     h._data.append(10)
-    #     h._data.append(1)
-    #     h._data.append(5)
-    #     self.assertEqual(2, h._greater_child_index(0))
+    def test_greater_child_index_right(self):
+        """
+        The 'greater child index' of an element with a left and right child, is
+        the index of the right child when it has a larger value than the left child.
+        Hint: Refine your logic. What are the possible states? No children, a
+              left but no right, or a left and a right.
+        """
+        h = MaxHeap()
+        h._data.append(10)
+        h._data.append(1)
+        h._data.append(5)
+        self.assertEqual(2, h._greater_child_index(0))
 
     """
     The max-heap property. Obey.
