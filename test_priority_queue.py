@@ -1,5 +1,5 @@
 # DO NOT MODIFY THIS FILE
-# Run me via: python3 -m unittest test_priority_queue
+# Run me via: python -m unittest test_priority_queue
 
 import unittest
 import time
@@ -25,57 +25,57 @@ class TestPriorityQueue(unittest.TestCase):
         except NameError:
             self.fail("Could not instantiate PriorityQueue.")
 
-    # def test_internal(self):
-    #     """
-    #     A PriorityQueue uses a list to store its data.
-    #     """
-    #     pq = PriorityQueue()
-    #     self.assertEqual(MaxHeap, type(pq.heap))
+    def test_internal(self):
+        """
+        A PriorityQueue uses a list to store its data.
+        """
+        pq = PriorityQueue()
+        self.assertEqual(MaxHeap, type(pq.heap))
 
     """
     Enqueuing and dequeuing. A PriorityQueue is simple if you've got a binary heap.
     """
 
-    # def test_enqueue_dequeue_one(self):
-    #     """
-    #     Enqueueing a single value is immediately dequeable.
-    #     """
-    #     pq = PriorityQueue()
-    #     j = Job(5, 'The')
-    #     pq.enqueue(j)
-    #     self.assertEqual(j, pq.dequeue())
+    def test_enqueue_dequeue_one(self):
+        """
+        Enqueueing a single value is immediately dequeable.
+        """
+        pq = PriorityQueue()
+        j = Job(5, 'The')
+        pq.enqueue(j)
+        self.assertEqual(j, pq.dequeue())
 
 
-    # def test_enqueue_dequeue_two(self):
-    #     """
-    #     Dequeuing from a two-element queue returns the one with highest priority.
-    #     """
-    #     pq = PriorityQueue()
-    #     lower_priority = Job(1, 'of')
-    #     higher_priority = Job(3, 'the')
-    #     pq.enqueue(higher_priority)
-    #     pq.enqueue(lower_priority)
-    #     self.assertEqual(higher_priority, pq.dequeue())
-    #     pq = PriorityQueue()
-    #     pq.enqueue(lower_priority)
-    #     pq.enqueue(higher_priority)
-    #     self.assertEqual(higher_priority, pq.dequeue())
+    def test_enqueue_dequeue_two(self):
+        """
+        Dequeuing from a two-element queue returns the one with highest priority.
+        """
+        pq = PriorityQueue()
+        lower_priority = Job(1, 'of')
+        higher_priority = Job(3, 'the')
+        pq.enqueue(higher_priority)
+        pq.enqueue(lower_priority)
+        self.assertEqual(higher_priority, pq.dequeue())
+        pq = PriorityQueue()
+        pq.enqueue(lower_priority)
+        pq.enqueue(higher_priority)
+        self.assertEqual(higher_priority, pq.dequeue())
 
-    # def test_enqueue_dequeue_three(self):
-    #     """
-    #     Dequeuing from a three-element queue returns the jobs with the highest
-    #     priority.
-    #     """
-    #     pq = PriorityQueue()
-    #     lower_priority = Job(1, 'like')
-    #     middle_priority = Job(3, 'who')
-    #     higher_priority = Job(5, 'on')
-    #     pq.enqueue(higher_priority)
-    #     pq.enqueue(lower_priority)
-    #     pq.enqueue(middle_priority)
-    #     self.assertEqual(higher_priority, pq.dequeue())
-    #     self.assertEqual(middle_priority, pq.dequeue())
-    #     self.assertEqual(lower_priority, pq.dequeue())
+    def test_enqueue_dequeue_three(self):
+        """
+        Dequeuing from a three-element queue returns the jobs with the highest
+        priority.
+        """
+        pq = PriorityQueue()
+        lower_priority = Job(1, 'like')
+        middle_priority = Job(3, 'who')
+        higher_priority = Job(5, 'on')
+        pq.enqueue(higher_priority)
+        pq.enqueue(lower_priority)
+        pq.enqueue(middle_priority)
+        self.assertEqual(higher_priority, pq.dequeue())
+        self.assertEqual(middle_priority, pq.dequeue())
+        self.assertEqual(lower_priority, pq.dequeue())
 
     """
     Emptiness

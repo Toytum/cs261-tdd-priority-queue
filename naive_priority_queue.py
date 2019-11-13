@@ -10,9 +10,22 @@ class NaivePriorityQueue:
 
     def enqueue(self, item):
         self.data.append(item)
+            
 
     def dequeue(self):
-        return self.data.pop()
+        if self.is_empty():
+            return None
+        else:
+            highest_priority = self.data[0]
+            for job in self.data:
+                if job > highest_priority:
+                    highest_priority = job
+            self.data.remove(highest_priority)
+            return highest_priority
+
+    def is_empty(self):
+        return len(self.data) == 0
+
 
 
     
