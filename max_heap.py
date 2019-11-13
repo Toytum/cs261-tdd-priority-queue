@@ -17,7 +17,7 @@ class MaxHeap:
       return self._size() == 0
 
    def _last_index(self):
-      return self._size()-1
+      return int(self._size()-1)
 
    def _value_at(self, index):
       return self._data[index]
@@ -52,9 +52,9 @@ class MaxHeap:
       elif 0 < index < 3:
          return 0
       elif ((index - 1) / 2).is_integer():
-         return (index -1) / 2
+         return int((index -1) / 2)
       else:
-         return (index -2) / 2
+         return int((index -2) / 2)
 
    def _parent(self, index):
       return self._data[int(self._parent_index(index))]
@@ -79,4 +79,39 @@ class MaxHeap:
          return self._value_at(index) > self._left_child(index) and self._value_at(index) > self._right_child(index)
       else:
          return True
+
+   def _swap(self, indexA, indexB):
+      temp = self._data[indexA]
+      self._data[indexA] = self._data[indexB]
+      self._data[indexB] = temp
+
+   def _sift_down(self, index):
+      if self._size() == 1:
+         return self._data[index]
+
+      elif self._has_left_child(index) and not self._has_right_child(index):
+         if self._value_at(index) < self._left_child(index):
+            self._swap(index, self._left_child_index(index))
+            self._sift_down(self._left_child_index(index))
+
+      elif self._has_left_child(index) and self._has_right_child(index):
+         if self._value_at(index) < self._left_child(index) and self._value_at(index) < self._right_child(index):
+            if self._left_child(index) > self._right_child(index):
+               self._swap(index, self._left_child_index(index))
+               self._sift_down(self._left_child_index(index))
+
+            elif self._right_child(index) > self._left_child(index):
+               self._swap(index, self._right_child_index(index))
+               self._sift_down(self._right_child_index(index))
+
+   def _sift_up(self, index):
+      if index == 0:
+         return self._data[index]
+      elif self._value_at(index) > self._parent(index):
+         self._swap(index, self._parent_index(index))
+         self._sift_up(self._parent_index(index))
+      
+   def insert(self, item):
+      self._data.append(item)
+      self._sift_up(len(self._data)- 1)
    pass
