@@ -113,5 +113,22 @@ class MaxHeap:
       
    def insert(self, item):
       self._data.append(item)
-      self._sift_up(len(self._data)- 1)
+      self._sift_up(self._last_index())
+
+   def delete(self):
+      if self._size() == 0:
+         return None
+      elif self._size() == 1:
+         toReturn = self._data[0]
+         self._data.pop()
+         self._sift_down(0)
+         return toReturn
+      else:
+         toReturn = self._data[0]
+         self._swap(0, self._last_index())
+
+         self._data.pop()
+         self._sift_down(0)
+         return toReturn
+
    pass

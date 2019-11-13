@@ -9,6 +9,11 @@ from max_heap import MaxHeap
 class PriorityQueue:
 
     def __init__(self):
-        self.heap = MaxHeap[]
+        self.heap = MaxHeap()
 
+    def enqueue(self, job):
+        self.heap.insert(job)
+
+    def dequeue(self):
+        return self.heap.delete()
     pass
