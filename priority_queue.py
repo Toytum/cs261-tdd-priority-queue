@@ -16,4 +16,6 @@ class PriorityQueue:
 
     def dequeue(self):
         return self.heap.delete()
-    pass
+
+    def is_empty(self):
+        return self.heap._is_empty()

@@ -81,46 +81,46 @@ class TestPriorityQueue(unittest.TestCase):
     Emptiness
     """
 
-    # def test_empty(self):
-    #     """
-    #     A queue is initially empty.
-    #     """
-    #     pq = PriorityQueue()
-    #     self.assertTrue(pq.is_empty())
+    def test_empty(self):
+        """
+        A queue is initially empty.
+        """
+        pq = PriorityQueue()
+        self.assertTrue(pq.is_empty())
 
-    # def test_not_empty(self):
-    #     """
-    #     A queue with one enqueued value is not empty.
-    #     """
-    #     pq = PriorityQueue()
-    #     pq.enqueue(Job(1, 'People'))
-    #     self.assertFalse(pq.is_empty())
+    def test_not_empty(self):
+        """
+        A queue with one enqueued value is not empty.
+        """
+        pq = PriorityQueue()
+        pq.enqueue(Job(1, 'People'))
+        self.assertFalse(pq.is_empty())
 
-    # def test_empty_after_dequeue(self):
-    #     """
-    #     A queue with one enqueued value is empty after dequeuing.
-    #     """
-    #     pq = PriorityQueue()
-    #     pq.enqueue(Job(1, 'was'))
-    #     _ = pq.dequeue()
-    #     self.assertTrue(pq.is_empty())
+    def test_empty_after_dequeue(self):
+        """
+        A queue with one enqueued value is empty after dequeuing.
+        """
+        pq = PriorityQueue()
+        pq.enqueue(Job(1, 'was'))
+        _ = pq.dequeue()
+        self.assertTrue(pq.is_empty())
 
-    # def test_not_empty_multiple(self):
-    #     """
-    #     A queue with two enqueued values is not empty after dequeuing only one.
-    #     """
-    #     pq = PriorityQueue()
-    #     pq.enqueue(Job(1, 'hustling'))
-    #     pq.enqueue(Job(3, 'arguing and bustling'))
-    #     _ = pq.dequeue()
-    #     self.assertFalse(pq.is_empty())
+    def test_not_empty_multiple(self):
+        """
+        A queue with two enqueued values is not empty after dequeuing only one.
+        """
+        pq = PriorityQueue()
+        pq.enqueue(Job(1, 'hustling'))
+        pq.enqueue(Job(3, 'arguing and bustling'))
+        _ = pq.dequeue()
+        self.assertFalse(pq.is_empty())
 
-    # def test_initial_dequeue(self):
-    #     """
-    #     Dequeuing from an empty queue returns None.
-    #     """
-    #     pq = PriorityQueue()
-    #     self.assertIsNone(pq.dequeue())
+    def test_initial_dequeue(self):
+        """
+        Dequeuing from an empty queue returns None.
+        """
+        pq = PriorityQueue()
+        self.assertIsNone(pq.dequeue())
 
     """
     Final test. Rawr!
